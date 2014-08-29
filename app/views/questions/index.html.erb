@@ -1,0 +1,35 @@
+<% title 'Listing Questions' %>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Type</th>
+    <th>Group</th>
+    <th>Unit</th>
+    <th>Sub Group</th>
+    <th>Sub Group Unit</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= question.title %></td>
+    <td><%= question.answer_type %></td>
+    <td><%= question.group %></td>
+    <td><%= question.unit %></td>
+    <td><%= question.sub_group %></td>
+    <td><%= question.sub_group_unit %></td>
+    <td><%= link_to 'Show', question %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<%= link_to 'New Question', new_question_path %>

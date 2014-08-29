@@ -1,0 +1,28 @@
+<% title 'Listing Answers' %>
+<% sub_title 'Answers associated with questions.' %>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+  <tr>
+    <th>Title</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @answers.each do |answer| %>
+  <tr>
+    <td><%= answer.title %></td>
+    <td><%= answer.value %></td>
+    <td><%= link_to 'Show', answer %></td>
+    <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+    <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<%= link_to 'New Answer', new_answer_path %>

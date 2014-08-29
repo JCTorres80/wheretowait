@@ -1,0 +1,13 @@
+<p>
+  <b>Question:</b>
+  <%= @question_answer.question %>
+</p>
+
+<p>
+  <b>Answer:</b>
+  <%= @question_answer.answer %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_answer_path(@question_answer) %> |
+<%= link_to 'Back', question_answers_path %>

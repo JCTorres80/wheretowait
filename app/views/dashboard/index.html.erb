@@ -1,0 +1,26 @@
+<% title 'Dashboard' %>
+<% sub_title 'Your Contributions!' %>
+
+<h1><i class="fa fa-tasks"></i> Questionnaires</h1>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Location</th>
+      <th>Created</th>
+      <th></th>
+    </tr>
+
+    <% @user.questionnaires.each do |questionnaire| %>
+        <tr>
+          <td><%= link_to questionnaire.location.name, questionnaire.location %></td>
+          <td><%= questionnaire.created_at.to_formatted_s :long %></td>
+          <td><%= link_to 'Show', questionnaire %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<br />
+
+<%= link_to 'New Questionnaire', new_questionnaire_path %>

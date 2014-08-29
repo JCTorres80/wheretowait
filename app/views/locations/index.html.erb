@@ -1,0 +1,56 @@
+<% title 'Locations' %>
+<% sub_title 'Search through Locations.' %>
+<% content_for :header do %>
+    <form role="form">
+      <div class="form-group">
+        <input type="search" class="form-control typeahead" placeholder="Type To Search">
+      </div>
+    </form>
+    Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
+<% end %>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Website</th>
+      <th></th>
+      <th></th>
+      <% if user_signed_in? && current_user.role == 'admin' %>
+      <th></th>
+      <th></th>
+      <% end %>
+    </tr>
+
+    <% @locations.each do |location| %>
+        <tr>
+          <td><%= location.name %></td>
+          <td>
+            <%= location.address %><br>
+            <%= location.city %>, <%= location.state %> <%= location.zip_code %><br>
+            <abbr title="Phone">P:</abbr> <%= location.phone %>
+          </td>
+          <td><%= location.website %></td>
+          <td>
+            <% if location.location_type == 'bar' %>
+                <i class="fa fa-glass"></i>
+            <% else %>
+                <i class="fa fa-cutlery"></i>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', location %></td>
+          <% if user_signed_in? && current_user.role == 'admin' %>
+          <td><%= link_to 'Edit', edit_location_path(location) %></td>
+          <td><%= link_to 'Destroy', location, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <% end %>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate @locations,
+                  :renderer => PaginationListLinkRenderer,
+                  :previous_label => '&laquo;',
+                  :next_label => '&raquo;',
+                  :class => 'pagination' %>

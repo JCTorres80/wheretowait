@@ -1,0 +1,123 @@
+<%= form_for(@questionnaire, :html => {:role => 'form'}) do |f| %>
+    <% if @questionnaire.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@questionnaire.errors.count, "error") %> prohibited this questionaire from being saved:</h2>
+
+          <ul>
+            <% @questionnaire.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <% if !user_signed_in? %>
+        <div class="form-group">
+          <%= f.label :user %>
+          <br/>
+          <%= f.text_field :user, :class => 'form-control' %>
+        </div>
+    <% end %>
+    <% if @questionnaire.location.nil? %>
+        <div class="form-group">
+          <%= f.label :location %>
+          <br/>
+          <%= f.collection_select :location, Location.all, :id, :name, {}, {:class => 'form-control'} %>
+        </div>
+    <% else %>
+        <div class="form-group">
+          <%= f.hidden_field :location, :value => @questionnaire.location.id %>
+          <%= f.label :location %>
+          <div>
+            <p class="form-control-static"><%= @questionnaire.location.name %></p>
+          </div>
+        </div>
+    <% end %>
+
+    <% if @questionnaire.created_at.nil? %>
+        <h2>Questions</h2>
+
+        <% @questionnaire.user_answers.each_with_index do |user_answer, index| %>
+            <%= f.fields_for :user_answers do |answer| %>
+                <div class="form-group">
+                  <%= answer.label user_answer.question.title %>
+                  <% if !user_answer.question.unit.empty? %>
+                      (<%= user_answer.question.unit %>)
+                  <% end %>
+                  <div>
+                    <% if user_answer.question.answer_type == 'number' %>
+                        <%= answer.text_field :value, :type => :number,
+                                              :prompt => user_answer.question.unit,
+                                              :class => 'form-control',
+                                              :index => index %>
+                    <% elsif user_answer.question.answer_type == 'choice' %>
+                        <%= answer.select :value,
+                                          options_from_collection_for_select(user_answer.question.answers.order(:value), :id, :title),
+                                          {:include_blank => false, :prompt => 'Select Answer...'},
+                                          {:class => 'form-control', :index => index}
+                        %>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+        <% end %>
+    <% else %>
+        <h2>Answers</h2>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <tr>
+              <th>Question</th>
+              <th>Value</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            <% @questionnaire.user_answers.each do |user_answer| %>
+                <tr>
+                  <td><%= user_answer.question.title %></td>
+                  <td><%= user_answer.value %></td>
+                  <td><%= link_to 'Show', user_answer %></td>
+                  <td><%= link_to 'Edit', edit_user_answer_path(user_answer) %></td>
+                  <td><%= link_to 'Destroy', user_answer, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+            <% end %>
+          </table>
+        </div>
+    <% end %>
+
+    <h2>Comment</h2>
+    <div class="form-group">
+      <%= f.label :comment %>
+      <br/>
+      <%= f.text_area :comment, :class => 'form-control', :rows => 5 %>
+    </div>
+
+    <% if user_signed_in? && current_user.role == 'admin' %>
+        <h2>Moderation</h2>
+
+        <div class="form-group">
+          <%= f.label :flagged %>
+          <div class="checkbox">
+            <%= f.label :flagged do %>
+                <%= f.check_box :flagged, :class => 'checkbox' %>
+                Flagged
+            <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :moderated %>
+          <div class="checkbox">
+            <%= f.label :moderated do %>
+                <%= f.check_box :moderated, :class => 'checkbox' %>
+                Moderated
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>

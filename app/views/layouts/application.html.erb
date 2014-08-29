@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? "#{content_for(:title)} - " : '' %>Where to Wait</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= analytics_init if Rails.env.production? %>
+</head>
+<body>
+
+<nav class="navbar navbar-static-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to :root, :class => 'navbar-brand' do %>
+        <%= image_tag "logo_small.png" %>
+    <% end %>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <% if user_signed_in? && current_user.role=='admin' %>
+          <li><%= link_to 'Members', :members %></li>
+          <li><%= link_to 'Flagged Words', :flagged_words %></li>
+          <li>
+            <%= link_to 'Questionnaires', :questionnaires %>
+            <% if !Questionnaire.flagged.not_moderated.empty? %>
+                <%= link_to '(!)', needs_moderation_questionnaires_path %>
+            <% end %>
+          </li>
+          <li><%= link_to 'Questions', :questions %></li>
+          <li><%= link_to 'Answers', :answers %></li>
+          <li><%= link_to 'User Answers', :user_answers %></li>
+      <% end %>
+      <% if user_signed_in? %>
+          <li>
+            <%= link_to :user_root do %>
+                Dashboard
+            <% end %>
+          </li>
+          <li>
+            <%= link_to :locations do %>
+                Locations
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_member_path current_user do %>
+                Settings
+            <% end %>
+          </li>
+          <li>
+            <%= link_to :destroy_user_session, :method => :delete do %>
+                Sign Out
+            <% end %>
+          </li>
+      <% else %>
+          <li>
+            <%= link_to :locations do %>
+                Locations
+            <% end %>
+          </li>
+          <li>
+            <%= link_to :new_user_registration do %>
+                Sign Up
+            <% end %>
+          </li>
+          <li>
+            <%= link_to :new_user_session do %>
+                Log In
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+
+</nav>
+
+<header class="page-header page-top <%= content_for?(:header_class) ? "#{content_for(:header_class)}" : '' %>">
+  <div class="container">
+    <div class="row <%= content_for?(:title_class) ? "#{content_for(:title_class)}" : '' %>">
+      <h1><%= content_for?(:title) ? "#{content_for(:title)}" : '' %>
+        <br>
+        <small><%= content_for?(:sub_title) ? "#{content_for(:sub_title)}" : '' %></small>
+      </h1>
+    </div>
+    <%= yield :header %>
+  </div>
+</header>
+
+<div class="container">
+  <%= render 'layouts/menus/flash', flash: flash %>
+</div>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<footer class="page-header" role="contentinfo">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Contact</h3>
+        <ul>
+          <li>
+            <%= link_to contact_path do %>
+                <i class="fa fa-envelope"></i> Contact Us
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://twitter.com/WhereToWait' do %>
+                <i class="fa fa-twitter"></i> Twitter
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://www.facebook.com/wheretowait' do %>
+                <i class="fa fa-facebook-square"></i> Facebook
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <!--
+      <div class="col-md-4">
+        <h3>About</h3>
+        <ul>
+          <li><%= link_to 'FAQ', faq_path %></li>
+          <li><%= link_to 'Blog', 'http://www.google.com/' %></li>
+        </ul>
+      </div>
+      -->
+      <div class="col-md-4 col-md-offset-4">
+        <h3>Legal</h3>
+        <ul>
+          <li>
+            <%= link_to guidelines_path do %>
+                <i class="fa fa-heart"></i> Site Guidelines
+            <% end %>
+          </li>
+          <li>
+            <%= link_to terms_path do %>
+                <i class="fa fa-inbox"></i> Terms and Conditions
+            <% end %>
+          </li>
+          <li>
+            <%= link_to privacy_path do %>
+                <i class="fa fa-lock"></i> Privacy Policy
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      Copyright &copy; 2014
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

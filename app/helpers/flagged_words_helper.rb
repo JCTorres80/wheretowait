@@ -1,0 +1,2 @@
+module FlaggedWordsHelper
+end

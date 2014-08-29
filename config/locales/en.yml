@@ -1,0 +1,6 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  Need_to_sign_in: "You need to sign in to access this page"
+  Need_permissions: "You don't have the correct permissions to view this page"

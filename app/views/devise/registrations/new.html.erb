@@ -1,0 +1,117 @@
+<% title 'Sign up' %>
+
+<%= form_for(resource, :as => resource_name,
+             :url => registration_path(resource_name),
+             :html => {:role => 'form'}) do |f| %>
+    <%= devise_error_messages! %>
+
+    <h2>Account Info</h2>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <br/>
+      <%= f.email_field :email,
+                        :autofocus => true,
+                        :placeholder => :email,
+                        :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password %>
+      <br/>
+      <%= f.password_field :password,
+                           :placeholder => :password,
+                           :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation %>
+      <br/>
+      <%= f.password_field :password_confirmation,
+                           :placeholder => 'confirm password',
+                           :class => 'form-control' %>
+    </div>
+
+    <hr>
+
+    <h2>You Info</h2>
+
+    <div class="form-group">
+      <%= f.label :city %>
+      <br/>
+      <%= f.text_field :city,
+                           :placeholder => :city,
+                           :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :state %>
+      <br/>
+      <%= f.select :state, us_states,
+                   {:include_blank => false, :prompt => 'Select State...'},
+                   {:class => 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zip_code %>
+      <br/>
+      <%= f.text_field :zip_code,
+                           :placeholder => :zip_code,
+                           :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :birthday %>
+      <br/>
+      <div class="form-inline">
+        <%= f.date_select :birthday,
+                          {
+                                  :start_year => Time.now.year - 100,
+                                  :prompt => {
+                                          :day => 'Select day',
+                                          :month => 'Select month',
+                                          :year => 'Select year'
+                                  }
+                          },
+                          {
+                                  :class => 'form-control'
+                          } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :gender %>
+      <br/>
+      <%= f.select :gender, User.gender_types,
+                   {:prompt => 'Select Gender...', :include_blank => false},
+                   {:class => 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :timezone %>
+      <br/>
+      <%= f.time_zone_select :timezone, nil,
+                             {:default => 'UTC'},
+                             {:class => 'form-control'}
+      %>
+    </div>
+
+    <hr>
+
+    <h2>Legal Info</h2>
+
+    <div class="form-group">
+      <%= f.label :confirm_terms_of_service %>
+      <div class="checkbox">
+        <%= f.label :confirm_terms_of_service do %>
+            <%= f.check_box :confirm_terms_of_service, :class => 'checkbox' %>
+            Accept Terms of Service
+        <% end %>
+      </div>
+      <%= link_to 'Terms of Service', terms_path, :target => '_blank' %>
+    </div>
+
+    <div><%= f.submit "Sign up", :class => 'btn btn-primary' %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

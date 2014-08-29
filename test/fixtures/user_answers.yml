@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  question: related_question
+  value: 9.99
+  questionnaire: related_questionnaire
+  location: related_location
+
+two:
+  question: related_question
+  value: 1
+  questionnaire: related_questionnaire
+  location: related_location

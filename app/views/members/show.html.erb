@@ -1,0 +1,75 @@
+<% title @user.email %>
+
+<p>
+  <b>City:</b>
+  <%= @user.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @user.state %>
+</p>
+
+<p>
+  <b>Zip Code:</b>
+  <%= @user.zip_code %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @user.birthday.to_formatted_s :long %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @user.gender %>
+</p>
+
+<p>
+  <b>Timezone:</b>
+  <%= @user.timezone %>
+</p>
+
+<% if user_signed_in? && current_user.role == 'admin' %>
+
+    <p>
+      <b>Sign In Count:</b>
+      <%= @user.sign_in_count %>
+    </p>
+
+    <p>
+      <b>Current Sign In At:</b>
+      <%= @user.current_sign_in_at %>
+    </p>
+
+    <p>
+      <b>Last Sign In At:</b>
+      <%= @user.last_sign_in_at %>
+    </p>
+
+    <p>
+      <b>Current Sign In Ip:</b>
+      <%= @user.current_sign_in_ip %>
+    </p>
+
+    <p>
+      <b>Last Sign In Ip:</b>
+      <%= @user.last_sign_in_ip %>
+    </p>
+
+    <p>
+      <b>Confirmed At:</b>
+      <%= @user.confirmed_at %>
+    </p>
+
+    <p>
+      <b>Role:</b>
+      <%= @user.role %>
+    </p>
+
+    <p>
+      <b>Terms Of Service Confirmed At:</b>
+      <%= @user.terms_of_service_confirmed_at %>
+    </p>
+
+<% end %>

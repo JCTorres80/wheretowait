@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: related_user
+  location: related_location
+  comment: hello world
+  flagged: false
+  moderated: false
+
+two:
+  user: related_user
+  location: related_location
+  comment: hello world
+  flagged: false
+  moderated: false
+
+related_questionnaire:
+  user: related_user
+  location: related_location
+  comment: hello world
+  flagged: false
+  moderated: false

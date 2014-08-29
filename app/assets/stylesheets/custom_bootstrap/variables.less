@@ -1,0 +1,64 @@
+// Use this file to override Twitter Bootstrap variables or define own variables.
+//@navbar-default-bg: #ff0000;
+
+// overrides
+//.page-header {
+//  background-color: #333333;
+//}
+
+// Grays
+// -------------------------
+
+@gray-darker:            lighten(#000, 13.5%); // #222
+@gray-dark:              lighten(#000, 20%);   // #333
+@gray:                   lighten(#000, 33.5%); // #555
+@gray-light:             lighten(#000, 60%);   // #999
+@gray-lighter:           lighten(#000, 93.5%); // #eee
+
+@white: #fff;
+@black: #000;
+
+@font-family-base: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+@font-size-base:          14px;
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+
+@brand-primary: #fb604e;
+@input-border-focus: darken(@brand-primary, 10%);
+
+@navbar-inverse-link-color: @white;
+@navbar-inverse-link-hover-color: @gray-lighter;
+
+.page-top {
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  margin: 0px 0px 20px 0px;
+  border-bottom: 1px solid @gray-darker;
+  background-color: darken(@brand-primary, 10%);
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  color: @gray-lighter;
+
+  a{
+    color: @gray-lighter;
+  }
+
+  a:visited{
+    color: @gray-light;
+  }
+
+  a:hover{
+    background: transparent;
+    text-decoration: none;
+    color: @white;
+  }
+}
+
+.navbar{
+  margin-bottom: 0px;
+}
+
+.navbar-nav > li > a {
+	padding-top: 30px;
+	padding-bottom: 27px;
+}

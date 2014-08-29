@@ -1,0 +1,53 @@
+<% title 'Your Bar + Restaurant Confidante' %>
+<% sub_title '' %>
+<% title_class 'align-center' %>
+<% header_class 'skyline' %>
+<% content_for :header do %>
+    <form role="form">
+      <div class="form-group">
+        <input type="search" class="form-control typeahead" placeholder="Type To Search">
+      </div>
+    </form>
+    Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
+<% end %>
+
+<!-- content -->
+<div class="row align-center padd-bottom">
+	<h2>Sponsors</h2>
+	<div class="image-padding">
+		<%= image_tag "logos/Cherry_s_Bar_and_Grill.png" %>
+	</div>
+	<div class="image-padding">
+		<%= image_tag "logos/Doherty_s_Bar.png" %>
+	</div>
+	<div class="image-padding">
+		<%= image_tag "logos/Dundee_Beer.png" %>
+	</div>
+	<div class="image-padding">
+		<%= image_tag "logos/Imported Layers.png" %>
+	</div>
+	<div class="image-padding">
+		<%= image_tag "logos/paprika_mexican_restaurant.png" %>
+	</div>
+	<div class="image-padding">
+		<%= image_tag "logos/STICKY_FINGERZ.png" %>
+	</div>
+</div>
+<div class="row full-size-info-region">
+  <div class="col-md-4">
+    <h2><i class="fa fa-search"></i> Find the Right Job</h2>
+
+    <p>Looking for a bar or restaurant to work at shouldn’t be so difficult. WhereToWait.com is a community where servers and bartenders get an inside scoop on some of the best places to work. Fellow members of the service industry anonymously share their experiences working at different establishments, so you can pick the establishment that’s right for you. Ever trained at a new job to come and realize it’s not what you expected? We’re here to prevent that.</p>
+  </div>
+  <div class="col-md-4">
+    <h2><i class="fa fa-bullhorn"></i> Review Anonymously</h2>
+
+    <p>The best way to keep the database active and updated is to contribute by reviewing places that you have previously or currently work at. Don’t worry about angry employers, we keep your reviews 100% anonymous. Post reviews to help others, and simultaneously read reviews from others to help yourself.</p>
+  </div>
+  <div class="col-md-4">
+    <h2><i class="fa fa-thumbs-up"></i> Use with Ease</h2>
+
+    <p>Want to review an establishment that isn’t posted? Type the name and location of the establishment, and it will give you an option to add it to our database. Ratings are uniquely calculated through a brief questionnaire that gathers information on some of the biggest concerns of wait staff. Then you have the option to write specifically about your experience.</p>
+  </div>
+</div>
+

@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: location one
+  phone: 1234567890
+  address: 123 hello
+  website: http://www.one.com
+  location_type: restaurant
+
+two:
+  name: location two
+  phone: 1234567890
+  address: 123 hello
+  website: http://www.two.com
+  location_type: bar
+
+related_location:
+  name: location one
+  phone: 1234567890
+  address: 123 hello
+  website: http://www.one.com
+  location_type: restaurant

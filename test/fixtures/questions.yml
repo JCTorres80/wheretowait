@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: question one
+  answer_type: choice
+  group: one
+  unit: '$'
+
+two:
+  title: question two
+  answer_type: number
+  group: two
+  unit: ''
+
+related_question:
+  title: question two
+  answer_type: number
+  group: one
+  unit: '%'

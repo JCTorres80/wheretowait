@@ -1,0 +1,91 @@
+<% title @location.name %>
+
+<% content_for :header do %>
+    <% if user_signed_in? %>
+        <%= link_to 'Fill Out Your Own Questionnaire!', new_location_questionnaire_path(@location) %>
+    <% end %>
+<% end %>
+
+<address>
+  <strong>
+    <% if @location.location_type == 'bar' %>
+        <i class="fa fa-glass"></i>
+    <% else %>
+        <i class="fa fa-cutlery"></i>
+    <% end %>
+    <%= @location.name %></strong>
+  <br>
+  <%= @location.address %>
+  <br>
+  <%= @location.city %>, <%= @location.state %> <%= @location.zip_code %>
+  <br>
+  <abbr title="Phone Number"><i class="fa fa-phone"></i></abbr> <%= @location.phone %>
+  <br>
+  <%= link_to @location.website do %>
+      <abbr title="Website"><i class="fa fa-globe"></i></abbr> <%= @location.website %>
+  <% end %>
+</address>
+
+<% if user_signed_in? && current_user.role == 'admin' %>
+    <%= link_to 'Edit', edit_location_path(@location) %>
+<% end %>
+
+<h2><i class="fa fa-star"></i> Summary</h2>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Group</th>
+      <th>Average Score</th>
+      <th>Global Score</th>
+    </tr>
+
+    <% summary_calculation_by_sub_group(Question.all, @location).each do |result| %>
+        <tr>
+          <td><%= result[:sub_group] %></td>
+          <td><%= show_formatted_result(result[:sub_group_unit], result[:avg_value]).html_safe %></td>
+          <td><%= show_formatted_result(result[:sub_group_unit], result[:avg_total_value]).html_safe %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<% if user_signed_in? && @location.questionnaires.empty? == false %>
+    <h2><i class="fa fa-tasks"></i> Questionnaires</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <tr>
+          <th>User</th>
+
+          <th></th>
+
+          <% if user_signed_in? && current_user.role == 'admin' %>
+              <th></th>
+              <th></th>
+          <% end %>
+        </tr>
+
+        <% @location.questionnaires.each do |questionnaire| %>
+            <tr>
+              <td><%= questionnaire.user.city %>, <%= questionnaire.user.state %></td>
+              <% if user_signed_in? %>
+                  <td><%= link_to 'Show', questionnaire %></td>
+              <% end %>
+              <% if user_signed_in? && current_user.role == 'admin' %>
+                  <td><%= link_to 'Edit', edit_questionnaire_path(questionnaire) %></td>
+                  <td><%= link_to 'Destroy', questionnaire, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              <% end %>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+<% end %>
+
+<% unless @location.questionnaires.not_flagged.empty? %>
+    <h2><i class="fa fa-inbox"></i> Comments</h2>
+    <% @location.questionnaires.not_flagged.each do |questionnaire| %>
+        <blockquote>
+          <p><%= questionnaire.comment %></p>
+          <footer><%= questionnaire.user.city %>, <%= questionnaire.user.state %></footer>
+        </blockquote>
+    <% end %>
+<% end %>

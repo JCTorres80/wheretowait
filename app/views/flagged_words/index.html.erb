@@ -1,0 +1,34 @@
+<% title 'Listing Flagged Words' %>
+<% sub_title 'Words that will automatically flag a comment in a questionnaire to not be shown.' %>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Word</th>
+      <th>Created At</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @flagged_words.each do |flagged_word| %>
+        <tr>
+          <td><%= flagged_word.word %></td>
+          <td><%= flagged_word.created_at %></td>
+          <td><%= link_to 'Show', flagged_word  %></td>
+          <td><%= link_to 'Edit', edit_flagged_word_path(flagged_word) %></td>
+          <td><%= link_to 'Delete', flagged_word, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<br/>
+
+<%= link_to 'New Flagged word', new_flagged_word_path %>
+
+<%= will_paginate @flagged_words,
+                  :renderer => PaginationListLinkRenderer,
+                  :previous_label => '&laquo;',
+                  :next_label => '&raquo;',
+                  :class => 'pagination' %>

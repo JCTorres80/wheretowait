@@ -1,0 +1,77 @@
+<%= form_for(@user, :url => url_for(:controller => 'members', :action => :update, :id => @user.id), :html => {:role => 'form'}) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :city %>
+      <br/>
+      <%= f.text_field :city,
+                       :placeholder => :city,
+                       :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :state %>
+      <br/>
+      <%= f.select :state, us_states,
+                   {:include_blank => false, :prompt => 'Select State...'},
+                   {:class => 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zip_code %>
+      <br/>
+      <%= f.text_field :zip_code,
+                       :placeholder => :zip_code,
+                       :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :birthday %>
+      <br/>
+      <div class="form-inline">
+        <%= f.date_select :birthday,
+                          {
+                                  :start_year => Time.now.year - 100,
+                                  :prompt => {
+                                          :day => 'Select day',
+                                          :month => 'Select month',
+                                          :year => 'Select year'
+                                  }
+                          },
+                          {
+                                  :class => 'form-control'
+                          } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :gender %>
+      <br/>
+      <%= f.select :gender, User.gender_types,
+                   {:prompt => 'Select Gender...', :include_blank => false},
+                   {:class => 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :timezone %>
+      <br/>
+      <%= f.time_zone_select :timezone, nil,
+                             {:default => 'UTC'},
+                             {:class => 'form-control'}
+      %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>
