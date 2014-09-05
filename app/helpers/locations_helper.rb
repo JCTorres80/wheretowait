@@ -48,9 +48,9 @@ module LocationsHelper
     min = value.floor
     half = value - value.floor > 0.5 ? 1 : 0
     max = 5 - value.floor - half
-    filled_stars = '<i class="fa fa-star"></i>' * min
-    half_stars = '<i class="fa fa-star-half-o"></i>' * half
-    empty_stars = '<i class="fa fa-star-o"></i>' * max
+    filled_stars = '<i class="fa fa-star gold-color-text"></i>' * min
+    half_stars = '<i class="fa fa-star-half-o gold-color-text"></i>' * half
+    empty_stars = '<i class="fa fa-star-o gold-color-text"></i>' * max
     filled_stars + half_stars + empty_stars
   end
 

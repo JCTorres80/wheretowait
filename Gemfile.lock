@@ -54,6 +54,8 @@ GEM
     execjs (2.0.2)
     faker (1.2.0)
       i18n (~> 0.5)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     google-analytics-rails (0.0.5)
     handlebars_assets (0.15)
       execjs (>= 1.2.9)
@@ -155,6 +157,10 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-typeahead-rails (0.9.3)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -175,6 +181,7 @@ DEPENDENCIES
   detect_timezone_rails
   devise
   faker
+  font-awesome-rails
   google-analytics-rails
   handlebars_assets
   heroku
@@ -187,6 +194,7 @@ DEPENDENCIES
   sqlite3
   therubyracer
   therubyrhino
+  twitter-typeahead-rails
   uglifier (>= 1.0.3)
   unicorn
   will_paginate

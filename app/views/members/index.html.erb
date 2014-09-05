@@ -1,23 +1,23 @@
 <% title 'Listing Members' %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
-  <tr>
-    <th>Email</th>
-    <th>City, State</th>
-    <th>Last Sign In</th>
-    <th></th>
-  </tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
+      <th>Email</th>
+      <th>City, State</th>
+      <th>Last Sign In</th>
+      <th></th>
+    </tr>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= user.city %>, <%= user.state %></td>
-    <td><%= user.last_sign_in_at %></td>
-    <td><%= link_to 'Show', member_path(user) %></td>
-  </tr>
-<% end %>
-</table>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.city %>, <%= user.state %></td>
+          <td><%= user.last_sign_in_at %></td>
+          <td><%= link_to 'Show', member_path(user) %></td>
+        </tr>
+    <% end %>
+  </table>
 </div>
 
 <%= will_paginate @users,

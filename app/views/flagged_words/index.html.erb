@@ -2,8 +2,8 @@
 <% sub_title 'Words that will automatically flag a comment in a questionnaire to not be shown.' %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
-    <tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
       <th>Word</th>
       <th>Created At</th>
       <th></th>
@@ -15,7 +15,7 @@
         <tr>
           <td><%= flagged_word.word %></td>
           <td><%= flagged_word.created_at %></td>
-          <td><%= link_to 'Show', flagged_word  %></td>
+          <td><%= link_to 'Show', flagged_word %></td>
           <td><%= link_to 'Edit', edit_flagged_word_path(flagged_word) %></td>
           <td><%= link_to 'Delete', flagged_word, method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>

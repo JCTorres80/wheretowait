@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   before_filter :verify_credentials_admin, :except => [:index, :show, :new, :create]
   before_filter :verify_credentials, :only => [:new, :create]
+  before_filter :set_cache_buster, :only => [:index]
 
   # GET /locations
   # GET /locations.json
@@ -85,6 +86,12 @@ class LocationsController < ApplicationController
   end
 
   private
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 
   def verify_credentials_admin
     # first check if anyone is even checked in

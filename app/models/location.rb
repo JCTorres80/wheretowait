@@ -7,19 +7,19 @@ class Location < ActiveRecord::Base
   has_many :user_answers, :through => :questionnaires
 
   # validations
-  validates :phone,:presence => true,
+  validates :phone, :presence => true,
             :numericality => true,
-            :length => { :minimum => 10, :maximum => 15 }
+            :length => {:minimum => 10, :maximum => 15}
   validates :name, :phone, :location_type, :website, :address, :city, :state, :zip_code, presence: true
-  validates :name, :address, :city, :state, length: { in: 1..128 }
+  validates :name, :address, :city, :state, length: {in: 1..128}
   validates_format_of :zip_code, :with => /^\d{5}(-\d{4})?$/, :message => "should be in the form 12345 or 12345-1234"
-  validates :website, length: { in: 16..128 }
-  validate  :check_type_in_types
-  validate  :check_url
+  validates :website, length: {in: 16..128}
+  validate :check_type_in_types
+  validate :check_url
 
   # constants
   def self.types
-    ['bar','restaurant']
+    ['bar', 'restaurant']
   end
 
   def self.search(search, page, per_page)

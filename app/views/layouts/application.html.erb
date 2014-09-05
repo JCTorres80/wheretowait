@@ -3,7 +3,7 @@
 <head>
   <title><%= content_for?(:title) ? "#{content_for(:title)} - " : '' %>Where to Wait</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= analytics_init if Rails.env.production? %>
@@ -13,11 +13,8 @@
 <nav class="navbar navbar-static-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+    <button type="button" class="navbar-toggle padd-bottom primary_color" data-toggle="collapse" data-target="#navbar-collapse">
+      <i class="fa fa-bars"></i>
     </button>
     <%= link_to :root, :class => 'navbar-brand' do %>
         <%= image_tag "logo_small.png" %>
@@ -25,7 +22,7 @@
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+  <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
     <ul class="nav navbar-nav">
       <% if user_signed_in? && current_user.role=='admin' %>
           <li><%= link_to 'Members', :members %></li>
@@ -73,8 +70,8 @@
             <% end %>
           </li>
           <li>
-            <%= link_to :new_user_session do %>
-                Log In
+            <%= link_to :new_user_session, :class => 'primary_color' do %>
+                Sign In
             <% end %>
           </li>
       <% end %>
@@ -104,61 +101,34 @@
   <%= yield %>
 </div>
 
-<footer class="page-header" role="contentinfo">
+<%= yield :footer %>
+
+<footer class="padding-around">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h3>Contact</h3>
-        <ul>
-          <li>
-            <%= link_to contact_path do %>
-                <i class="fa fa-envelope"></i> Contact Us
-            <% end %>
-          </li>
-          <li>
-            <%= link_to 'https://twitter.com/WhereToWait' do %>
-                <i class="fa fa-twitter"></i> Twitter
-            <% end %>
-          </li>
-          <li>
-            <%= link_to 'https://www.facebook.com/wheretowait' do %>
-                <i class="fa fa-facebook-square"></i> Facebook
-            <% end %>
-          </li>
-        </ul>
+      <div class="col-sm-11">
+        <p>
+          <%= link_to contact_path, :class => 'padd-right' do %>
+              Contact Us
+          <% end %>
+          <%= link_to guidelines_path, :class => 'padd-right' do %>
+              Site Guidelines
+          <% end %>
+          <%= link_to terms_path, :class => 'padd-right' do %>
+              Terms and Conditions
+          <% end %>
+          <%= link_to privacy_path do %>
+              Privacy Policy
+          <% end %>
+        </p>
       </div>
-      <!--
-      <div class="col-md-4">
-        <h3>About</h3>
-        <ul>
-          <li><%= link_to 'FAQ', faq_path %></li>
-          <li><%= link_to 'Blog', 'http://www.google.com/' %></li>
-        </ul>
-      </div>
-      -->
-      <div class="col-md-4 col-md-offset-4">
-        <h3>Legal</h3>
-        <ul>
-          <li>
-            <%= link_to guidelines_path do %>
-                <i class="fa fa-heart"></i> Site Guidelines
-            <% end %>
-          </li>
-          <li>
-            <%= link_to terms_path do %>
-                <i class="fa fa-inbox"></i> Terms and Conditions
-            <% end %>
-          </li>
-          <li>
-            <%= link_to privacy_path do %>
-                <i class="fa fa-lock"></i> Privacy Policy
-            <% end %>
-          </li>
-        </ul>
+      <div class="col-sm-1">
+        <%= image_tag "social/facebook-xsmall.png" %>
+        <%= image_tag "social/twitter-xsmall.png" %>
       </div>
     </div>
     <div class="row">
-      Copyright &copy; 2014
+      <p>Copyright &copy; 2014</p>
     </div>
   </div>
 </footer>

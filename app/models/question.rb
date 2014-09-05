@@ -8,13 +8,13 @@ class Question < ActiveRecord::Base
 
   # validations
   validates :title, :group, :answer_type, presence: true
-  validates :title, :group, length: { in: 1..128 }
-  validates :unit, length: { in: 0..3 }
-  validate  :check_type_in_types
+  validates :title, :group, length: {in: 1..128}
+  validates :unit, length: {in: 0..3}
+  validate :check_type_in_types
 
   # constants
   def self.types
-    ['choice','number']
+    ['choice', 'number']
   end
 
   def average_value

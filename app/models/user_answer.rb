@@ -10,9 +10,8 @@ class UserAnswer < ActiveRecord::Base
   validates :question, :questionnaire, :location, presence: true
   validates :value, :numericality => true
 
-  def self.search(search, page, per_page)
+  def self.search(page, per_page)
     paginate :per_page => per_page, :page => page,
-             :conditions => ['value like ?', "%#{search}%"],
              :order => 'created_at DESC'
   end
 

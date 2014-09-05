@@ -7,22 +7,16 @@
 <% end %>
 
 <address>
-  <strong>
-    <% if @location.location_type == 'bar' %>
-        <i class="fa fa-glass"></i>
-    <% else %>
-        <i class="fa fa-cutlery"></i>
-    <% end %>
-    <%= @location.name %></strong>
+  <strong><%= @location.name %></strong>
   <br>
   <%= @location.address %>
   <br>
   <%= @location.city %>, <%= @location.state %> <%= @location.zip_code %>
   <br>
-  <abbr title="Phone Number"><i class="fa fa-phone"></i></abbr> <%= @location.phone %>
+  <%= @location.phone %>
   <br>
   <%= link_to @location.website do %>
-      <abbr title="Website"><i class="fa fa-globe"></i></abbr> <%= @location.website %>
+      <%= @location.website %>
   <% end %>
 </address>
 
@@ -30,10 +24,10 @@
     <%= link_to 'Edit', edit_location_path(@location) %>
 <% end %>
 
-<h2><i class="fa fa-star"></i> Summary</h2>
+<h2>Summary</h2>
 <div class="table-responsive">
-  <table class="table table-hover">
-    <tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
       <th>Group</th>
       <th>Average Score</th>
       <th>Global Score</th>
@@ -50,10 +44,10 @@
 </div>
 
 <% if user_signed_in? && @location.questionnaires.empty? == false %>
-    <h2><i class="fa fa-tasks"></i> Questionnaires</h2>
+    <h2>Comments</h2>
     <div class="table-responsive">
-      <table class="table table-hover">
-        <tr>
+      <table class="table table-hover table-striped">
+        <tr class="table-header">
           <th>User</th>
 
           <th></th>
@@ -81,7 +75,7 @@
 <% end %>
 
 <% unless @location.questionnaires.not_flagged.empty? %>
-    <h2><i class="fa fa-inbox"></i> Comments</h2>
+    <h2>Comments</h2>
     <% @location.questionnaires.not_flagged.each do |questionnaire| %>
         <blockquote>
           <p><%= questionnaire.comment %></p>

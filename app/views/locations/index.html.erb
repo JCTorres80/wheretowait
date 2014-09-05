@@ -1,5 +1,4 @@
 <% title 'Locations' %>
-<% sub_title 'Search through Locations.' %>
 <% content_for :header do %>
     <form role="form">
       <div class="form-group">
@@ -9,17 +8,19 @@
     Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
 <% end %>
 
+<h1>Results</h1>
+
 <div class="table-responsive">
-  <table class="table table-hover">
-    <tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
       <th>Name</th>
       <th>Contact</th>
       <th>Website</th>
       <th></th>
       <th></th>
       <% if user_signed_in? && current_user.role == 'admin' %>
-      <th></th>
-      <th></th>
+          <th></th>
+          <th></th>
       <% end %>
     </tr>
 
@@ -27,8 +28,10 @@
         <tr>
           <td><%= location.name %></td>
           <td>
-            <%= location.address %><br>
-            <%= location.city %>, <%= location.state %> <%= location.zip_code %><br>
+            <%= location.address %>
+            <br>
+            <%= location.city %>, <%= location.state %> <%= location.zip_code %>
+            <br>
             <abbr title="Phone">P:</abbr> <%= location.phone %>
           </td>
           <td><%= location.website %></td>
@@ -39,10 +42,13 @@
                 <i class="fa fa-cutlery"></i>
             <% end %>
           </td>
-          <td><%= link_to 'Show', location %></td>
+          <td><%= link_to location, :class => 'primary-color-text' do %>
+                <i class="fa fa-eye"></i>
+            <% end %>
+          </td>
           <% if user_signed_in? && current_user.role == 'admin' %>
-          <td><%= link_to 'Edit', edit_location_path(location) %></td>
-          <td><%= link_to 'Destroy', location, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              <td><%= link_to 'Edit', edit_location_path(location) %></td>
+              <td><%= link_to 'Destroy', location, method: :delete, data: {confirm: 'Are you sure?'} %></td>
           <% end %>
         </tr>
     <% end %>

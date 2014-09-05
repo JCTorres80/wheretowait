@@ -2,30 +2,30 @@
 <% sub_title 'Completed Questionnaires needing moderation.' %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
-  <tr>
-    <th>User</th>
-    <th>Location</th>
-    <th>Created At</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
+      <th>User</th>
+      <th>Location</th>
+      <th>Created At</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @questionnaires.each do |questionnaire| %>
-  <tr>
-    <td><%= questionnaire.user.email %></td>
-    <td><%= questionnaire.location.name %></td>
-    <td><%= questionnaire.created_at.to_formatted_s :short %></td>
-    <td><%= link_to 'Show', questionnaire %></td>
-    <td><%= link_to 'Edit', edit_questionnaire_path(questionnaire) %></td>
-    <td><%= link_to 'Destroy', questionnaire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <% @questionnaires.each do |questionnaire| %>
+        <tr>
+          <td><%= questionnaire.user.email %></td>
+          <td><%= questionnaire.location.name %></td>
+          <td><%= questionnaire.created_at.to_formatted_s :short %></td>
+          <td><%= link_to 'Show', questionnaire %></td>
+          <td><%= link_to 'Edit', edit_questionnaire_path(questionnaire) %></td>
+          <td><%= link_to 'Destroy', questionnaire, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        </tr>
+    <% end %>
+  </table>
 </div>
 
-<br />
+<br/>
 
 <%= link_to 'New Questionnaire', new_questionnaire_path %>
 

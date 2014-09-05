@@ -8,7 +8,7 @@ class Answer < ActiveRecord::Base
 
   # validations
   validates :title, :value, presence: true
-  validates :title, length: { in: 1..128 }
+  validates :title, length: {in: 1..128}
   validates :value, :numericality => true
 
 end

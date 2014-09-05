@@ -1,11 +1,11 @@
 <% title 'Dashboard' %>
 <% sub_title 'Your Contributions!' %>
 
-<h1><i class="fa fa-tasks"></i> Questionnaires</h1>
+<h1>Questionnaires</h1>
 
 <div class="table-responsive">
-  <table class="table table-hover">
-    <tr>
+  <table class="table table-hover table-striped">
+    <tr class="table-header">
       <th>Location</th>
       <th>Created</th>
       <th></th>
@@ -21,6 +21,6 @@
   </table>
 </div>
 
-<br />
+<br/>
 
 <%= link_to 'New Questionnaire', new_questionnaire_path %>

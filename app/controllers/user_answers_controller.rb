@@ -4,7 +4,7 @@ class UserAnswersController < ApplicationController
   # GET /user_answers
   # GET /user_answers.json
   def index
-    @user_answers = UserAnswer.search(params[:search], params[:page], 30)
+    @user_answers = UserAnswer.search(params[:page], 30)
 
     respond_to do |format|
       format.html # index.html.erb

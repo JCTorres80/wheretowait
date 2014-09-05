@@ -9,21 +9,28 @@
 // Grays
 // -------------------------
 
-@gray-darker:            lighten(#000, 13.5%); // #222
-@gray-dark:              lighten(#000, 20%);   // #333
-@gray:                   lighten(#000, 33.5%); // #555
-@gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 93.5%); // #eee
+@gray-darker: lighten(#000, 13.5%);
+// #222
+@gray-dark: lighten(#000, 20%);
+// #333
+@gray: lighten(#000, 33.5%);
+// #555
+@gray-light: lighten(#000, 60%);
+// #999
+@gray-lighter: lighten(#000, 93.5%);
+// #eee
 
 @white: #fff;
 @black: #000;
 
-@font-family-base: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-@font-size-base:          14px;
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+@font-family-base: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+@font-size-base: 14px;
+@line-height-base: 1.428571429;
+// 20/14
+@line-height-computed: floor(@font-size-base * @line-height-base);
+// ~20px
 
-@brand-primary: #fb604e;
+@brand-primary: #fa5f4f;
 @input-border-focus: darken(@brand-primary, 10%);
 
 @navbar-inverse-link-color: @white;
@@ -39,26 +46,39 @@
 
   color: @gray-lighter;
 
-  a{
+  a {
     color: @gray-lighter;
+
+    &:visited {
+      color: @gray-lighter;
+    }
+
+    &:hover {
+      background: transparent;
+      text-decoration: none;
+      color: @white;
+    }
   }
 
-  a:visited{
-    color: @gray-light;
-  }
-
-  a:hover{
-    background: transparent;
-    text-decoration: none;
-    color: @white;
-  }
 }
 
-.navbar{
+.navbar {
   margin-bottom: 0px;
 }
 
 .navbar-nav > li > a {
-	padding-top: 30px;
-	padding-bottom: 27px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  color: @gray-darker;
+
+  &:visited {
+    color: @gray-darker;
+  }
+}
+
+.navbar-nav {
+  margin: 0px;
+  padding-right: 20px;
+  padding-top: 13px;
 }

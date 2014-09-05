@@ -53,6 +53,8 @@ gem 'therubyracer'  # If using Ruby
 gem 'therubyrhino'  # If using JRuby
 gem 'less-rails-bootstrap'
 
+gem 'font-awesome-rails'
+
 # faker
 gem 'faker'
 
@@ -67,3 +69,5 @@ gem 'will_paginate'
 
 # google analystics
 gem 'google-analytics-rails'
+
+gem 'twitter-typeahead-rails'

@@ -10,7 +10,7 @@ class Questionnaire < ActiveRecord::Base
 
   # valdiations
   validates :comment, :user, :location, presence: true
-  validates :comment, length: { in: 1..5000 }
+  validates :comment, length: {in: 1..5000}
 
   # scopes
   scope :flagged, where(:flagged => true)

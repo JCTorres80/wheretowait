@@ -3,7 +3,7 @@ class FlaggedWord < ActiveRecord::Base
 
   # validations
   validates :word, presence: true
-  validates :word, length: { in: 1..128 }
+  validates :word, length: {in: 1..128}
 
   def self.search(search, page, per_page)
     paginate :per_page => per_page, :page => page,

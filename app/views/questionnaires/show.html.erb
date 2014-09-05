@@ -30,10 +30,10 @@
 
 <% unless @questionnaire.flagged %>
     <h2>Comment</h2>
-	<blockquote>
-	  <p><%= @questionnaire.comment %></p>
-	  <footer><%= @questionnaire.user.city %>, <%= @questionnaire.user.state %></footer>
-	</blockquote>
+    <blockquote>
+      <p><%= @questionnaire.comment %></p>
+      <footer><%= @questionnaire.user.city %>, <%= @questionnaire.user.state %></footer>
+    </blockquote>
 <% end %>
 
 <% if user_signed_in? && current_user.role == 'admin' %>
