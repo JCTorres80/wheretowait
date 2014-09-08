@@ -52,7 +52,7 @@
                                               :index => index %>
                     <% elsif user_answer.question.answer_type == 'choice' %>
                         <%= answer.select :value,
-                                          options_from_collection_for_select(user_answer.question.answers.order(:value), :id, :title),
+                                          options_from_collection_for_select(user_answer.question.answers.order(:value), :value, :title),
                                           {:include_blank => false, :prompt => 'Select Answer...'},
                                           {:class => 'form-control', :index => index}
                         %>

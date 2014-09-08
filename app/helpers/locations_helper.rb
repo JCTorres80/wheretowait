@@ -45,6 +45,11 @@ module LocationsHelper
     unless unit.empty?
       return value.round(2).to_s+' '+unit
     end
+    if value > 5
+      value = 5
+    elsif value < 0
+      value = 0
+    end
     min = value.floor
     half = value - value.floor > 0.5 ? 1 : 0
     max = 5 - value.floor - half

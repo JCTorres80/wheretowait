@@ -17,7 +17,7 @@
     <% @questionnaire.user_answers.each do |user_answer| %>
         <tr>
           <td><%= user_answer.question.title %></td>
-          <td><%= show_formatted_result(user_answer.question.unit, user_answer.value.round(2)).html_safe %></td>
+          <td><%= show_formatted_result(user_answer.question.unit, user_answer.value).html_safe %></td>
           <% if user_signed_in? && current_user.role == 'admin' %>
               <td><%= link_to 'Show', user_answer %></td>
               <td><%= link_to 'Edit', edit_user_answer_path(user_answer) %></td>

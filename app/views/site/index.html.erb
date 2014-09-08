@@ -1,28 +1,28 @@
 <% title 'Your Bar + Restaurant Confidante' %>
 <% sub_title '' %>
 <% title_class 'align-center' %>
-<% header_class 'skyline' %>
+<% header_class 'skyline skyline-topper' %>
 <% content_for :header do %>
-    <%= form_tag("/locations", method: "get", role: "form", class: "form-horizontal") do %>
+    <%= form_tag("/locations", method: "get", role: "form", class: "form-horizontal padd-top") do %>
         <div class="form-group">
           <div class="col-sm-9 col-sm-offset-1">
-            <%= text_field_tag(:search, nil, {class: "form-control", placeholder: "Type To Search", type: "search"}) %>
+            <%= text_field_tag(:search, nil, {class: "form-control typeahead", placeholder: "Type To Search", type: "search"}) %>
           </div>
           <%= submit_tag("Search", class: "btn btn-primary col-sm-1") %>
         </div>
     <% end %>
     <div class="row">
-      <div class="col-sm-offset-2">
+      <div class="align-center">
         Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
       </div>
     </div>
 <% end %>
 
 <!-- content -->
-<div class="row align-center padd-bottom">
+<div class="row align-center">
   <h2>Sponsors</h2>
 </div>
-<div class="row">
+<div class="row padd-bottom">
   <div class="col-sm-2 col-xs-4">
     <%= image_tag "logos/Cherry_s_Bar_and_Grill.png" %>
   </div>

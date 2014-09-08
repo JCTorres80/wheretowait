@@ -1,11 +1,19 @@
 <% title 'Locations' %>
+<% title_class 'align-center' %>
 <% content_for :header do %>
-    <form role="form">
-      <div class="form-group">
-        <input type="search" class="form-control typeahead" placeholder="Type To Search">
+    <%= form_tag("/locations", method: "get", role: "form", class: "form-horizontal padd-top") do %>
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-1">
+            <%= text_field_tag(:search, nil, {class: "form-control typeahead", placeholder: "Type To Search", type: "search"}) %>
+          </div>
+          <%= submit_tag("Search", class: "btn btn-primary col-sm-1") %>
+        </div>
+    <% end %>
+    <div class="row">
+      <div class="align-center">
+        Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
       </div>
-    </form>
-    Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
+    </div>
 <% end %>
 
 <h1>Results</h1>

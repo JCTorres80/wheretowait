@@ -92,5 +92,11 @@
 .skyline {
   background-image: image-url('Skyline.png');
   background-repeat: no-repeat;
-  background-position: bottom center;
+  background-position: center bottom;
+  min-height: 300px;
+  background-position-y: 125px;
+}
+
+.skyline-topper{
+  padding-top: 50px;
 }
