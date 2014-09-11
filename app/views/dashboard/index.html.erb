@@ -15,7 +15,10 @@
         <tr>
           <td><%= link_to questionnaire.location.name, questionnaire.location %></td>
           <td><%= questionnaire.created_at.to_formatted_s :long %></td>
-          <td><%= link_to 'Show', questionnaire %></td>
+          <td><%= link_to questionnaire, :class => 'primary-color-text' do %>
+                <i class="fa fa-eye"></i>
+            <% end %>
+          </td>
         </tr>
     <% end %>
   </table>
@@ -23,4 +26,8 @@
 
 <br/>
 
-<%= link_to 'New Questionnaire', new_questionnaire_path %>
+<p>
+  <%= link_to 'New Questionnaire', new_questionnaire_path %>
+  <br/>
+  Need to create a new location? <%= link_to 'Add A New Location!', new_location_path %>
+</p>

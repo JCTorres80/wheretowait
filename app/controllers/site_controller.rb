@@ -20,6 +20,12 @@ class SiteController < ApplicationController
 
   end
 
+  def send_email
+  logger.info params(:name)
+  logger.info params(:email)
+  logger.info params(:comment)
+  end
+
   def faq
 
   end

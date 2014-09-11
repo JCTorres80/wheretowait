@@ -1,5 +1,8 @@
 Wheretowait::Application.routes.draw do
 
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match '/dashboard' => 'dashboard#index', :as => :user_root
@@ -9,6 +12,7 @@ Wheretowait::Application.routes.draw do
     resources :user_answers
     get :needs_moderation, :on => :collection
   end
+  resources :contacts
   resources :user_answers
   resources :answers
   resources :questions
@@ -24,7 +28,6 @@ Wheretowait::Application.routes.draw do
   match '/terms' => 'site#terms', :as => :terms
   match '/privacy' => 'site#privacy', :as => :privacy
   match '/about' => 'site#about', :as => :about
-  match '/contact' => 'site#contact', :as => :contact
   match '/guidelines' => 'site#guidelines', :as => :guidelines
   match '/faq' => 'site#faq', :as => :faq
 
