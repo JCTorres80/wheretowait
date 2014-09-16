@@ -52,6 +52,10 @@ div {
   text-align: center;
 }
 
+.align-right {
+  text-align: right;
+}
+
 #notice {
   color: green;
 }
@@ -101,6 +105,15 @@ div {
 
 .padd-top {
   padding-top: 20px;
+}
+
+.padd-lg-top {
+  padding-top: 30px;
+}
+
+.padd-top-bottom{
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .padd-right {

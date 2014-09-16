@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
-  before_filter :verify_credentials_admin, :except => [:new, :show, :create]
-  before_filter :verify_credentials, :only => [:new, :show, :create]
+  before_filter :verify_credentials_admin, :except => [:new, :show, :create, :edit, :update, :destroy]
+  before_filter :verify_credentials, :only => [:new, :show, :create, :edit, :update, :destroy]
   helper :locations
 
   # GET /questionnaires

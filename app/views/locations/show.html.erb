@@ -26,11 +26,11 @@
 
 <h2>Summary</h2>
 <div class="table-responsive">
-  <table class="table table-hover table-striped">
+  <table class="table table-striped">
     <tr class="table-header">
       <th>Group</th>
-      <th>Average Score</th>
-      <th>Global Score</th>
+      <th>Average Score <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="Average Score for this location"></i></th>
+      <th>Global Score <i class="fa fa-info-circle" data-toggle="tooltip" data-placement="top" title="Average Score for all locations"></i></th>
     </tr>
 
     <% summary_calculation_by_sub_group(Question.all, @location).each do |result| %>

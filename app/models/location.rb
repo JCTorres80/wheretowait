@@ -24,7 +24,7 @@ class Location < ActiveRecord::Base
 
   def self.search(search, page, per_page)
     paginate :per_page => per_page, :page => page,
-             :conditions => ['name like ?', "%#{search}%"],
+             :conditions => ['name like ? OR city like ?', "%#{search}%", "%#{search}%"],
              :order => :name
   end
 

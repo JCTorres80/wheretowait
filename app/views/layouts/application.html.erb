@@ -12,73 +12,75 @@
 
 <nav class="navbar navbar-static-top" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle padd-bottom primary_color" data-toggle="collapse" data-target="#navbar-collapse">
-      <i class="fa fa-bars"></i>
-    </button>
-    <%= link_to :root, :class => 'navbar-brand' do %>
-        <%= image_tag "logo_small.png" %>
-    <% end %>
-  </div>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle padd-top-bottom primary_color" data-toggle="collapse" data-target="#navbar-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+      <%= link_to :root, :class => 'navbar-brand' do %>
+          <%= image_tag "logo_small.png" %>
+      <% end %>
+    </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
-    <ul class="nav navbar-nav">
-      <% if user_signed_in? && current_user.role=='admin' %>
-          <li><%= link_to 'Contacts', :contacts %></li>
-          <li><%= link_to 'Members', :members %></li>
-          <li><%= link_to 'Flagged Words', :flagged_words %></li>
-          <li>
-            <%= link_to 'Questionnaires', :questionnaires %>
-            <% if !Questionnaire.flagged.not_moderated.empty? %>
-                <%= link_to '(!)', needs_moderation_questionnaires_path %>
-            <% end %>
-          </li>
-          <li><%= link_to 'Questions', :questions %></li>
-          <li><%= link_to 'Answers', :answers %></li>
-          <li><%= link_to 'User Answers', :user_answers %></li>
-      <% end %>
-      <% if user_signed_in? %>
-          <li>
-            <%= link_to :user_root do %>
-                Dashboard
-            <% end %>
-          </li>
-          <li>
-            <%= link_to :locations do %>
-                Locations
-            <% end %>
-          </li>
-          <li>
-            <%= link_to edit_member_path current_user do %>
-                Settings
-            <% end %>
-          </li>
-          <li>
-            <%= link_to :destroy_user_session, :method => :delete do %>
-                Sign Out
-            <% end %>
-          </li>
-      <% else %>
-          <li>
-            <%= link_to :locations do %>
-                Locations
-            <% end %>
-          </li>
-          <li>
-            <%= link_to :new_user_registration do %>
-                Sign Up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to :new_user_session, :class => 'primary_color' do %>
-                Sign In
-            <% end %>
-          </li>
-      <% end %>
-    </ul>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? && current_user.role=='admin' %>
+            <li><%= link_to 'Contacts', :contacts %></li>
+            <li><%= link_to 'Members', :members %></li>
+            <li><%= link_to 'Flagged Words', :flagged_words %></li>
+            <li>
+              <%= link_to 'Questionnaires', :questionnaires %>
+              <% if !Questionnaire.flagged.not_moderated.empty? %>
+                  <%= link_to '(!)', needs_moderation_questionnaires_path %>
+              <% end %>
+            </li>
+            <li><%= link_to 'Questions', :questions %></li>
+            <li><%= link_to 'Answers', :answers %></li>
+            <li><%= link_to 'User Answers', :user_answers %></li>
+        <% end %>
+        <% if user_signed_in? %>
+            <li>
+              <%= link_to :user_root do %>
+                  Dashboard
+              <% end %>
+            </li>
+            <li>
+              <%= link_to :locations do %>
+                  Locations
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_member_path current_user do %>
+                  Settings
+              <% end %>
+            </li>
+            <li>
+              <%= link_to :destroy_user_session, :method => :delete do %>
+                  Sign Out
+              <% end %>
+            </li>
+        <% else %>
+            <li>
+              <%= link_to :locations do %>
+                  Locations
+              <% end %>
+            </li>
+            <li>
+              <%= link_to :new_user_registration do %>
+                  Sign Up
+              <% end %>
+            </li>
+            <li>
+              <%= link_to :new_user_session, :class => 'primary_color' do %>
+                  Sign In
+              <% end %>
+            </li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.navbar-collapse -->
 
 </nav>
 
@@ -129,7 +131,10 @@
       </div>
     </div>
     <div class="row">
-      <p>Copyright &copy; 2014</p>
+      <div class="col-sm-11">
+        <p>Copyright &copy; 2014</p>
+      </div>
+
     </div>
   </div>
 </footer>

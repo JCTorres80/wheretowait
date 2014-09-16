@@ -16,10 +16,13 @@
     </div>
 <% end %>
 
-<h1>Results</h1>
+<div class="row">
+  <h1>Results</h1>
+</div>
 
+<div class="row">
 <div class="table-responsive">
-  <table class="table table-hover table-striped">
+  <table class="table table-striped">
     <tr class="table-header">
       <th>Name</th>
       <th>Contact</th>
@@ -62,9 +65,24 @@
     <% end %>
   </table>
 </div>
+</div>
 
-<%= will_paginate @locations,
-                  :renderer => PaginationListLinkRenderer,
-                  :previous_label => '&laquo;',
-                  :next_label => '&raquo;',
-                  :class => 'pagination' %>
+<div class="row">
+  <div class="col-sm-9">
+    <%= will_paginate @locations,
+                      :renderer => PaginationListLinkRenderer,
+                      :previous_label => '&laquo;',
+                      :next_label => '&raquo;',
+                      :class => 'pagination' %>
+  </div>
+
+
+  <div class="col-sm-3">
+    <p class="align-right padd-lg-top">
+      <i class="fa fa-cutlery"></i> Restaurants
+      <i class="fa fa-glass"></i> Bars
+    </p>
+
+  </div>
+</div>
+
