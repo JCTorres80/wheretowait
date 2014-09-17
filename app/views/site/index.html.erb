@@ -3,14 +3,18 @@
 <% title_class 'align-center' %>
 <% header_class 'skyline skyline-topper' %>
 <% content_for :header do %>
-    <%= form_tag("/locations", method: "get", role: "form", class: "form-horizontal padd-top") do %>
-        <div class="form-group">
-          <div class="col-sm-9 col-sm-offset-1">
-            <%= text_field_tag(:search, nil, {class: "form-control typeahead", placeholder: "Type To Search", type: "search"}) %>
+    <div class="row">
+      <%= form_tag("/locations", method: "get", role: "form", class: "form-horizontal padd-top") do %>
+          <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-1">
+              <%= text_field_tag(:search, nil, {class: "form-control typeahead", placeholder: "Type To Search", type: "search"}) %>
+            </div>
+            <div class="col-sm-1 align-right">
+              <%= submit_tag("Search", class: "btn btn-primary") %>
+            </div>
           </div>
-          <%= submit_tag("Search", class: "btn btn-primary col-sm-1") %>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
     <div class="row">
       <div class="col-sm-offset-1 padd-left">
         Can't find what you're looking for? <%= link_to 'Add A New Location!', new_location_path %>
@@ -24,22 +28,22 @@
 </div>
 <div class="row padd-bottom padd-top">
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/Cherry_s_Bar_and_Grill.png" %>
+    <%= image_tag "logos/1.png" %>
   </div>
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/Doherty_s_Bar.png" %>
+    <%= image_tag "logos/2.png" %>
   </div>
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/Dundee_Beer.png" %>
+    <%= image_tag "logos/3.png" %>
   </div>
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/Imported Layers.png" %>
+    <%= image_tag "logos/4.png" %>
   </div>
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/paprika_mexican_restaurant.png" %>
+    <%= image_tag "logos/5.png" %>
   </div>
   <div class="col-sm-2 col-xs-4">
-    <%= image_tag "logos/STICKY_FINGERZ.png" %>
+    <%= image_tag "logos/6.png" %>
   </div>
 </div>
 
