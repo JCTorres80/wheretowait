@@ -6,7 +6,11 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.search(params[:search], params[:page], 30)
+    search_term = params[:search]
+    if search_term.nil?
+      search_term = ""
+    end
+    @locations = Location.search(search_term, params[:page], 30)
 
     respond_to do |format|
       format.html # index.html.erb

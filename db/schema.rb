@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20140911133801) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "flagged_words", ["word"], :name => "index_flagged_words_on_word"
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -44,9 +46,18 @@ ActiveRecord::Schema.define(:version => 20140911133801) do
     t.date     "open_date"
     t.string   "website"
     t.string   "location_type"
+    t.text     "search_string"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "locations", ["address"], :name => "index_locations_on_address"
+  add_index "locations", ["city"], :name => "index_locations_on_city"
+  add_index "locations", ["name"], :name => "index_locations_on_name"
+  add_index "locations", ["search_string"], :name => "index_locations_on_search_string"
+  add_index "locations", ["state"], :name => "index_locations_on_state"
+  add_index "locations", ["website"], :name => "index_locations_on_website"
+  add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
 
   create_table "question_answers", :force => true do |t|
     t.integer  "question_id"

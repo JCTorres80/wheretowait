@@ -10,8 +10,16 @@ class CreateLocations < ActiveRecord::Migration
       t.date :open_date
       t.string :website
       t.string :location_type
+      t.text :search_string
 
       t.timestamps
     end
+    add_index :locations, :name
+    add_index :locations, :search_string
+    add_index :locations, :address
+    add_index :locations, :city
+    add_index :locations, :state
+    add_index :locations, :zip_code
+    add_index :locations, :website
   end
 end

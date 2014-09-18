@@ -17,6 +17,9 @@ class Location < ActiveRecord::Base
   validate :check_type_in_types
   validate :check_url
 
+  #callbacks
+  before_save :before_save
+
   # constants
   def self.types
     ['bar', 'restaurant']
@@ -24,7 +27,7 @@ class Location < ActiveRecord::Base
 
   def self.search(search, page, per_page)
     paginate :per_page => per_page, :page => page,
-             :conditions => ['name like ? OR city like ?', "%#{search}%", "%#{search}%"],
+             :conditions => ['search_string like ?', "%#{search.downcase}%"],
              :order => :name
   end
 
@@ -51,6 +54,10 @@ class Location < ActiveRecord::Base
 
   def check_type_in_types
     errors.add(:location_type, "is not a proper type.") unless Location.types.include?(location_type)
+  end
+
+  def before_save
+    self.search_string = name.downcase + " " + address.downcase + " " + city.downcase + ", " + state.downcase + " " + zip_code
   end
 
 end

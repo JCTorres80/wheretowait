@@ -104,7 +104,7 @@ class QuestionnairesController < ApplicationController
     @questionnaire.destroy
 
     respond_to do |format|
-      format.html { redirect_to questionaires_url }
+      format.html { redirect_to user_root_path }
       format.json { head :no_content }
     end
   end

@@ -4,5 +4,6 @@ class CreateFlaggedWords < ActiveRecord::Migration
       t.string :word
       t.timestamps
     end
+    add_index :flagged_words, :word
   end
 end
